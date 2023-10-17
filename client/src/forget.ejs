@@ -1,0 +1,101 @@
+<!-- I want to build and app and website for my smart devicemonitoring system. 
+There are two actors: Users and Caretakers. Total tables in the database will be: 
+1. User
+2. Caretaker
+3. Device
+4. CCTV
+
+For Device Table:
+
+Device_ID is the Primary Key which is a Long Integer
+Other attributes are:  Heartbeat, Temperature, BloodPressure, Oxygen Level, Accelerometer Data which will be calculated by the sensors present in the device.
+
+
+For CCTV Table:
+CCTVID is the Primary key which is again a Long Interger.
+
+For USER Table:
+User_ID will be the primary key.
+Device_ID which is the foreign key from Watch Table. Every user has one-to-one relation with the Device and CCTV.
+CCTV_ID which is again foreign key from CCTV Table
+User_Name
+User_Age
+User_Password
+User_Email
+User_Contact_No
+User_Image_URL
+
+For Caretaker Table
+
+Caretaker_ID will be the primary key.
+User_ID is the foreign key. And Caretaker has one to may relation with USER table. A single caretaker can be related to one or more users.
+Caretaker_Name
+Caretaker_Email
+Caretaker_Password
+Caretaker_Contact_No
+Caretaker_Image_URL
+
+
+I want to use NodeJs, ExpressJS, MongoDB to create the database.
+
+Flow of the project is:
+1. User registers on website.
+2. Then logs in on app.
+3. Start the devices in pairing mode.
+4. And connect to the devices using Bluetooth from the app.
+5. Then credentials are shared and the device sends a unique ID (Mac Id or anything) to the app.
+6. The app sends this ID to the database (mapping ID to the user).
+7. All the data sent to database will have the unique I'd associated.
+8. Livestream can be accessed through this id.
+
+DIrectory Structure:
+smart-device-monitoring/
+backend-project/
+├── server/
+│   ├── app.js
+│   ├── controllers/
+|   |  |---userController.js
+│   ├── models/
+|   |   |----user.js
+|   |   |----caretaker.js
+│   ├── routes/
+|   |  |---user.js
+|   |  |---caretaker.js
+│   ├── config/
+├── client/
+│   ├── dist/
+│   ├── src/
+|   |  |---home.ejs
+|   |  |---login.ejs
+|   |  |---register.ejs
+|   |  |---forget.ejs
+└── node_modules/
+├── public/
+|---package-lock.json
+├── package.json
+├── .gitignore
+
+Write code for forget.ejs
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>Forgot Password</title>
+    </head>
+
+    <body>
+        <h1> Forgot Password </h1>
+        <!-- <form action = "/reset-password" method = "POST">
+            <label for = "email"> Email: </label>
+            <input type = "email" name = "email" id = "email" required>
+            <br>
+            <input type = "submit" value = "Submit">
+        </form> -->
+        <h2> Try Remembering it!</h2>
+        <p> 
+            Remembered your password? <a href = "/login"> Login </a>
+        </p>
+    </body>
+</html>
